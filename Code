@@ -1,0 +1,17 @@
+# Smart-Irrigation-system-using-IoT
+#GPIO code
+import time, sys
+import RPi.GPIO as GPIO
+def gasDetect():
+ GPIO.setmode(GPIO.BOARD)
+ GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+ def action(pin):
+  print('Gas sensor detected action!')
+  return
+ GPIO.add_event_detect(12, GPIO.RISING)
+ GPIO.add_event_callback(12, action)
+ try:
+  time.sleep(0.5)
+  GPIO.cleanup()
+  except KeyboardInterrupt:
+  GPIO.cleanup()
